@@ -28,13 +28,13 @@ const values = useContext(TaskContext);
     }
   };
   const filteredCards = values.cards.filter((card) =>
-  card.messege.toLowerCase().includes(values.search.toLowerCase())
+  card.messege.toLowerCase().includes((values.search || "").toLowerCase())
 );
 
   const [editIndex, setEditIndex] = useState(null);
   const [editTxt, setEditTxt] = useState("");
   const saveCard = () => {
-    const updatedCards = filteredCards.map((card, i) => {
+    const updatedCards = values.cards.map((card, i) => {
       if (i === editIndex) {
         return { ...card, messege: editTxt };
       }
@@ -74,7 +74,7 @@ const values = useContext(TaskContext);
           {alertTxt}
         </div>
       )}
-      {values.cards.map((item, index) => (
+      {filteredCards.map((item, index) => (
         <Card
           date={item.date}
           dark={values.dark}

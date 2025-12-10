@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./component/Navbar";
 import Input from "./component/Input";
-const [search , setSearch] = useState('')
 import { TaskContext } from "./component/TaskContext";
 function App() {
+  const [search , setSearch] = useState('')
   const [dark, setDark] = useState(false);
   const handleMode = () => setDark((prev) => !prev);
   const [cards, setCards] = useState(() => {
